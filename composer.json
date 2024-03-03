@@ -1,0 +1,43 @@
+{
+    "name": "rockylars/symfony-messenger-reader",
+    "description": "Adds a missing command to Symfony Messenger that allows you to read the envelope contents without processing it",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rockylars",
+            "email": "rockylars@protonmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Rocky\\SymfonyMessengerReader\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rocky\\SymfonyMessengerReader\\Tests\\": "tests/",
+            "Rocky\\SymfonyMessengerReader\\Tests\\Support\\": "tests/_support"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.1",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "codeception/codeception": ">=5.1",
+        "codeception/module-asserts": ">=3.0",
+        "rockylars/package-files": ">=1.1"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "~6.4"
+        }
+    }
+}
