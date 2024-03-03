@@ -1,0 +1,51 @@
+{
+    "name": "rockylars/symfony-messenger-reader",
+    "description": "Adds a missing command to Symfony Messenger that allows you to read the envelope contents without processing it",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rockylars",
+            "email": "rockylars@protonmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Rocky\\SymfonyMessengerReader\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rocky\\SymfonyMessengerReader\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.2",
+        "ext-json": "*",
+        "jms/serializer": ">=3.29",
+        "symfony/console": ">=5.4",
+        "symfony/dependency-injection": ">=5.4",
+        "symfony/http-kernel": ">=5.4",
+        "symfony/messenger": ">=5.4",
+        "thecodingmachine/safe": ">=1.3"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": ">=3.4",
+        "phpstan/phpstan": ">=1.10",
+        "phpstan/phpstan-deprecation-rules": ">=1.1",
+        "phpstan/phpstan-symfony": ">=1.3",
+        "spaze/phpstan-disallowed-calls": ">=3.1",
+        "thecodingmachine/phpstan-safe-rule": ">=1.2"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "^5.4"
+        }
+    }
+}
