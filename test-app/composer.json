@@ -1,0 +1,42 @@
+{
+    "name": "rockylars/test-project",
+    "description": "Tests the Messenger Reader",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rockylars",
+            "email": "rockylars@protonmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Rocky\\TestApp\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rocky\\SymfonyMessengerReader\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.2",
+        "rockylars/symfony-messenger-reader": "dev-initial_setup"
+    },
+    "require-dev": {
+        "phpstan/phpstan": ">=1.10",
+        "phpstan/phpstan-deprecation-rules": ">=1.1",
+        "spaze/phpstan-disallowed-calls": ">=3.1"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "^5.4"
+        }
+    }
+}
