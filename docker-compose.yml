@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+  package-php-cli:
+    build: docker/php-cli
+    environment:
+      COMPOSER_HOME: "/home/.composer"
+      PHP_IDE_CONFIG: "serverName=localhost"
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # This is needed for Linux to run
+    volumes:
+      - ./:/opt/project
+      - ~/.composer:/home/.composer:cached
+    networks:
+      - default
+    user: ${HOST_UID}:${HOST_GID} # This is needed for Linux to not create files as root
+    depends_on:
+      - package-database
+
+  package-database:
+    image: mariadb:latest
+    environment:
+      MARIADB_ROOT_PASSWORD: t_rpw
+      MARIADB_DATABASE: t_db
+      MARIADB_USER: t_u
+      MARIADB_PASSWORD: t_pw
+    volumes:
+#      - package-database:/var/lib/mysql
+      - ./tests/_data/database_structure.sql:/docker-entrypoint-initdb.d/database_structure.sql
+    ports:
+      - "3310:3306"
+    networks:
+      - default
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+  test-app-php-cli:
+    build: docker/php-cli
+    environment:
+      COMPOSER_HOME: "/home/.composer"
+      PHP_IDE_CONFIG: "serverName=localhost"
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # This is needed for Linux to run
+    volumes:
+      - ./test-app:/opt/project
+      - ~/.composer:/home/.composer:cached
+    networks:
+      - default
+    user: ${HOST_UID}:${HOST_GID} # This is needed for Linux to not create files as root
+    depends_on:
+      - test-app-database
+
+  test-app-database:
+    image: mariadb:latest
+    environment:
+      MARIADB_ROOT_PASSWORD: t_rpw
+      MARIADB_DATABASE: t_db
+      MARIADB_USER: t_u
+      MARIADB_PASSWORD: t_pw
+    volumes:
+#      - test-app-database:/var/lib/mysql
+      - ./tests/_data/database_structure.sql:/docker-entrypoint-initdb.d/database_structure.sql
+    ports:
+      - "3311:3306"
+    networks:
+      - default
